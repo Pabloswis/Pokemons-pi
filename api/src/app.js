@@ -3,7 +3,8 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 //requiero el archivo de rutas del index
-const routes = require('./routes/index.js');
+const pokemonRoutes = require('./routes/pokemonsRoutes.js');
+const type = require('./routes/Type.js')
 
 require('./db.js');
 
@@ -23,9 +24,11 @@ server.use((req, res, next) => {
   next();
 });
 
+
 //aca tengo que traer cada ruta
 //todo lo que llegue a /, va a usar lo que hay en index
-server.use('/', routes);
+server.use('/pokemons', pokemonRoutes);
+server.use('/type',type)
 //aca tendria que hacer la principal de /pokemons y /types
 
 // Error catching endware.
