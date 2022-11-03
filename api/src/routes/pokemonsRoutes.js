@@ -38,15 +38,23 @@ const getPokemonsApi = async () => {
 };
 
 const getPokemonsDB = async () => {
-  const pokemonesDB = await Pokemon.findAll({
-    include: {
-      model: Type,
-      attributes: ["nombre"],
-      through: {
-        attributes: [],
-      },
-    },
-  });
+  let pokemonesDB = await Pokemon.findAll({include: Type});
+  console.log(pokemonesDB)
+  
+  pokemonesDB =  pokemonesDB.map(poke =>{
+    return {
+      id: poke.id,
+      nombre: poke.nombre,
+      vida: poke.vida,
+      ataque: poke.ataque,
+      defensa: poke.defensa,
+      velocidad: poke.velocidad,
+      altura: poke.altura,
+      peso: poke.peso,
+      tipo: poke.types.map((t) => t.nombre),
+      imagen: poke.imagen,
+    }
+  })
   return pokemonesDB;
 };
 
@@ -79,10 +87,11 @@ router.get("/", async (req, res) => {
         ? res.status(200).send(pokemonName)
         : res.status(404).send("Pokemon no encontrado");
     } else {
-      console.log(allPokemons);
+      //console.log(allPokemons);
       res.status(200).send(allPokemons);
     }
   } catch (error) {
+    console.log(error)
     res.status(400).send(error);
   }
 
@@ -171,7 +180,7 @@ router.post("/", async (req, res) => {
     //vincular el tipo a la otra tabla
     newPokemon.addType(tipoDb);
 
-    console.log(newPokemon);
+    //console.log(newPokemon);
 
     res.status(201).json(newPokemon);
   } catch (error) {

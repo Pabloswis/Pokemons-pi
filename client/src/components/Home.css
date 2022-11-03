@@ -1,0 +1,25 @@
+.divPokemones{
+   
+    margin: 50px;
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+a:link, a:visited {
+    /* background-color: #f44336; */
+    /* color: white; */
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .divMaster{
+  background-image: url(./imagen/website-background-image-size-psd-vector-photo.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+    background-size: cover;
+  }

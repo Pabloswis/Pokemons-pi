@@ -51,6 +51,7 @@ module.exports = (sequelize) => {
     },
     imagen: {
       type: DataTypes.STRING,
+      defaultValue: "https://purepng.com/public/uploads/large/purepng.com-pokeballpokeballdevicepokemon-ballpokemon-capture-ball-17015278258769okdi.png"
     },
   });
 };

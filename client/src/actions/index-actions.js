@@ -10,3 +10,13 @@ export function getPokemons() {
     });
   };
 }
+
+export function getTypes(){
+  return async function(dispatch){
+    let types = await axios.get("http://localhost:3001/type",{})
+    return dispatch({
+      type: "GET_TYPES",
+      payload: types.data
+    }) 
+  }
+}
