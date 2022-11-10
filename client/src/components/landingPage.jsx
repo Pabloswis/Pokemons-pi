@@ -3,18 +3,16 @@ import { Link } from 'react-router-dom'
 import './LandingPage.css'
 export default function LandingPage() {
     return (
-        <div>
-
+        <div>      
         
-        
-        <div className="divLanding">
+        <section className="divLanding">
             
                 <h1>Bienvenidos al PI de Pokemones</h1>
                     <Link to='/home'>
                          <button>Ingresar</button>
                     </Link>
                       
-        </div>
+        </section>
 
             <p>Este es el Proyecto individual de Pablo Swistoniuk.
                 en el cual se pone en practica todo lo desarrollado en el Bootcamp de SoyHenry

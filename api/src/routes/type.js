@@ -27,7 +27,7 @@ router.get("/", async (req, res) => {
     });
 
     const allTypes = await Type.findAll();
-
+    // allTypes.push({nombre:'todos',id:100})
     res.status(200).json(allTypes);
   } catch (error) {
     res.status(400).send(error);

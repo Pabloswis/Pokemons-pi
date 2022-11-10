@@ -13,7 +13,7 @@ const router = Router();
 
 const getPokemonsApi = async () => {
   let primeraPromesa = await axios.get(
-    "https://pokeapi.co/api/v2/pokemon?limit=50&offset=0"
+    "https://pokeapi.co/api/v2/pokemon?limit=100&offset=0"
   );
   primeraPromesa = primeraPromesa.data.results?.map((pokemon) =>
     axios.get(pokemon.url)
@@ -39,7 +39,7 @@ const getPokemonsApi = async () => {
 
 const getPokemonsDB = async () => {
   let pokemonesDB = await Pokemon.findAll({include: Type});
-  console.log(pokemonesDB)
+ 
   
   pokemonesDB =  pokemonesDB.map(poke =>{
     return {
@@ -52,6 +52,7 @@ const getPokemonsDB = async () => {
       altura: poke.altura,
       peso: poke.peso,
       tipo: poke.types.map((t) => t.nombre),
+      creadoDb: poke.creadoDb,
       imagen: poke.imagen,
     }
   })
@@ -164,6 +165,7 @@ router.get("/:idPokemon", async (req, res) => {
 router.post("/", async (req, res) => {
   const { id, nombre, vida, ataque, defensa, velocidad, imagen, tipo } =
     req.body;
+    
   try {
     const newPokemon = await Pokemon.create({
       nombre,
@@ -171,7 +173,7 @@ router.post("/", async (req, res) => {
       ataque,
       defensa,
       velocidad,
-      imagen,
+      imagen: imagen?imagen:"https://purepng.com/public/uploads/large/purepng.com-pokeballpokeballdevicepokemon-ballpokemon-capture-ball-17015278258769okdi.png"
     });
 
     let tipoDb = await Type.findAll({

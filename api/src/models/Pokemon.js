@@ -44,14 +44,14 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       defaultValue: 50,
     },
-    creadoDB: {
+    creadoDb: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: true,
     },
     imagen: {
       type: DataTypes.STRING,
-      defaultValue: "https://purepng.com/public/uploads/large/purepng.com-pokeballpokeballdevicepokemon-ballpokemon-capture-ball-17015278258769okdi.png"
+      // defaultValue: "https://purepng.com/public/uploads/large/purepng.com-pokeballpokeballdevicepokemon-ballpokemon-capture-ball-17015278258769okdi.png"
     },
   });
 };
