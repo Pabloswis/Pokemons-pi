@@ -50,38 +50,60 @@ export default function PokemonCrate() {
         }
     }
 
+    const handleSelect = (e)=> {
+        if(input.tipo.length <2){
+            setInput({
+                ...input,
+                tipo: [...input.tipo, e.target.value]
+            })
+        }
+    }
+
     function handleSubmit(e) {
         e.preventDefault()
-        console.log(input)
+       
         dispatch(postPokemon(input))
-        setInput({
-            nombre: '',
-            vida: 50,
-            ataque: 50,
-            defensa: 50,
-            velocidad: 50,
-            altura: 50,
-            peso: 50,
-            imagen: '',
-            tipo: []
-        })
+        setInput({ 
+        nombre: '',
+        vida: 50,
+        ataque: 50,
+        defensa: 50,
+        velocidad: 50,
+        altura: 50,
+        peso: 50,
+        imagen: '',
+        tipo: []})
         history.push('/home')
+    }
+
+    function resetTipos(e){
+        setInput({
+            tipo:[]
+        })
     }
 
     function validate(input) {
         const errores = {}
         if (!input.nombre) {
             errores.nombre = 'se requiere ingresar un nombre'
+
         } else if (input.nombre.search("[0-9]") !== -1) {
             errores.nombre = "El nombre no debe contener numeros";
+
         } else if (input.nombre.search("[^A-Za-z0-9]") !== -1) {
             errores.nombre = "El nombre no debe contener simbolos ni espacios";
-        } else if (input.vida > 100 || input.vida < 1) {
+
+        } else if (parseInt(input.vida) > 100 || parseInt(input.vida) < 1) {
             errores.vida = 'el valor de vida debe ser entre 1 y 100'
-        } else if (input.ataque > 100 || input.ataque < 1) {
+
+        } else if (parseInt(input.ataque) > 100 || (parseInt(input.ataque)) < 1) {
             errores.vida = 'el valor de ataque debe ser entre 1 y 100'
-        } else if (input.defensa > 100 || input.defensa < 1) {
+
+        } else if (parseInt(input.defensa) > 100 || (parseInt(input.defensa)) < 1) {
             errores.vida = 'el valor de defensa debe ser entre 1 y 100'
+
+        } else if (input.tipo.length > 2) {
+            errores.tipo = 'solo puede seleccionar 2 tipos'
         }
 
         return errores
@@ -95,54 +117,70 @@ export default function PokemonCrate() {
             <form onSubmit={(e) => handleSubmit(e)}>
                 <div>
                     <label>Nombre: </label>
-                    <input onChange={(e) => handleChange(e)} name='nombre' type="text" />
+                    <input onChange={(e) => handleChange(e)} key='nombre' name='nombre' type="text" />
                     {errores.nombre && (
                         <p className="error">{errores.nombre}</p>
                     )}
                 </div>
                 <div>
                     <label>Vida: </label>
-                    <input onChange={(e) => handleChange(e)} name='vida' type="number" min="0" max="100" />
+                    <input onChange={(e) => handleChange(e)} key='vida' name='vida' type="number" min="0" max="100" />
                     {errores.vida && (
                         <p className="error">{errores.vida}</p>
                     )}
                 </div>
                 <div>
                     <label>Ataque: </label>
-                    <input onChange={(e) => handleChange(e)} name='ataque' type="number" min="0" max="100" />
+                    <input onChange={(e) => handleChange(e)} key='ataque' name='ataque' type="number" min="0" max="100" />
                     {errores.ataque && (
                         <p className="error">{errores.ataque}</p>
                     )}
                 </div>
                 <div>
                     <label>Defensa: </label>
-                    <input onChange={(e) => handleChange(e)} name='defensa' type="number" min="0" max="100" />
+                    <input onChange={(e) => handleChange(e)} key='defensa' name='defensa' type="number" min="0" max="100" />
                     {errores.defensa && (
                         <p className="error">{errores.defensa}</p>
                     )}
                 </div>
                 <div>
                     <label>Velocidad: </label>
-                    <input onChange={(e) => handleChange(e)} name='velocidad' type="number" min="0" />
+                    <input onChange={(e) => handleChange(e)} key='velocidad' name='velocidad' type="number" min="0" />
                 </div>
                 <div>
                     <label>Altura: </label>
-                    <input onChange={(e) => handleChange(e)} name='altura' type="number" min="0"  />
+                    <input onChange={(e) => handleChange(e)} key='altura' name='altura' type="number" min="0" />
                 </div>
                 <div>
                     <label>Peso: </label>
-                    <input onChange={(e) => handleChange(e)} name='peso' type="number" min="0"  />
+                    <input onChange={(e) => handleChange(e)} key='peso' name='peso' type="number" min="0" />
                 </div>
                 <div>
                     <label>Imagen: </label>
-                    <input onChange={(e) => handleChange(e)} name='imagen' type="text" />
+                    <input onChange={(e) => handleChange(e)} key='imagen' name='imagen' type="text" />
                 </div>
+              
                 <div>
-                    {/* limitar hasta 2 */}
-                    <label>Tipo:</label>
-                    {tipos ? tipos.map(t => <label key={t.id}>  <input onChange={(e) => handleCheck(e)} key={t.id} type="checkbox" value={t.nombre} name={t.nombre} /> {t.nombre} </label>) : null}
+                   
+                    <label >Tipos: </label>
+                    <select onChange={(e)=> handleSelect(e)}>
+                    {tipos?.map(type => {
+                    return (
+                        <option key={type.id} value={type.nombre}>{type.nombre}</option>
+                    )
+                })}
+                     </select>
+                      <button onClick={resetTipos} type='button'>Reset Tipos</button>
+                      {input.tipo?.map(tipo=>{
+                        return(
+                            <p>{tipo}</p>
+                            
+                        )
+                      })}
+
+                    
                 </div>
-                <button type="submit"> Crear Pokemon</button>
+                <button  type="submit"> Crear Pokemon</button>
             </form>
         </section>
     )

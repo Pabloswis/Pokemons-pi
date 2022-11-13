@@ -2,6 +2,7 @@ const initialState = {
   pokemons: [],
   types: [],
   pokeonesFull: [],
+  detail: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -13,6 +14,12 @@ function rootReducer(state = initialState, action) {
         pokeonesFull: action.payload,
       };
 
+    case "GET_POKEMON_ID":
+      return {
+        ...state,
+        detail: action.payload,
+      };
+
     case "GET_TYPES":
       return {
         ...state,
@@ -20,7 +27,6 @@ function rootReducer(state = initialState, action) {
       };
 
     case "FILTER_POKEMONS_TYPE":
-       
       const pokeTotal = state.pokeonesFull;
       const pokemonesfilter =
         action.payload === "Todos"
@@ -32,8 +38,6 @@ function rootReducer(state = initialState, action) {
       };
 
     case "FILTER_FROM":
-     
-      
       if (action.payload === "todos")
         return {
           ...state,
@@ -47,43 +51,76 @@ function rootReducer(state = initialState, action) {
         ...state,
         pokemons: pokeFiltrados,
       };
-    
+
     case "ORDER_NAME":
-      let ordenados =
-        action.payload === "nombreAz"
-          ? state.pokemons.sort(function (a, b) {
-              if (a.nombre > b.nombre) {
-                return 1;
-              }
-              if (a.nombre < b.nombre) {
-                return -1;
-              }
-              return 0;
-            })
-          : state.pokemons.sort((a, b) => {
-              if (a.nombre > b.nombre) {
-                return -1;
-              }
-              if (a.nombre < b.nombre) {
-                return 1;
-              }
-              return 0;
-            });
+      let ordenados = [];
+      if (action.payload === "nombreAz") {
+        ordenados = state.pokemons.sort(function (a, b) {
+          if (a.nombre.toLowerCase() > b.nombre.toLowerCase()) {
+            return 1;
+          }
+          if (a.nombre.toLowerCase() < b.nombre.toLowerCase()) {
+            return -1;
+          }
+          return 0;
+        });
+      }
+      if (action.payload === "nombreZa") {
+        ordenados = state.pokemons.sort((a, b) => {
+          if (a.nombre.toLowerCase() > b.nombre.toLowerCase()) {
+            return -1;
+          }
+          if (a.nombre.toLowerCase() < b.nombre.toLowerCase()) {
+            return 1;
+          }
+          return 0;
+        });
+      }
 
       return {
         ...state,
         pokemons: ordenados,
       };
 
-    case "GET_POKEMON_NAME":
-      return{
-        ...state,
-        pokemons: action.payload
+    case "ORDEN_ATAQUE":
+      let orden = [];
+      if (action.payload === "ataqueAz") {
+        orden = state.pokemons.sort(function (a, b) {
+          if (parseInt(a.ataque) > parseInt (b.ataque)) {
+            return 1;
+          }
+          if (parseInt(a.ataque) < parseInt (b.ataque)) {
+            return -1;
+          }
+          return 0;
+        });
       }
-      case "POST_POKEMON":
-        return{
-          ...state,
-        }
+      if (action.payload === "ataqueZa") {
+        orden = state.pokemons.sort((a, b) => {
+          if (parseInt(a.ataque) > parseInt (b.ataque)) {
+            return -1;
+          }
+          if (parseInt(a.ataque) < parseInt (b.ataque)) {
+            return 1;
+          }
+          return 0;
+        });
+      }
+
+      return {
+        ...state,
+        pokemons: orden,
+      };
+
+    case "GET_POKEMON_NAME":
+      return {
+        ...state,
+        pokemons: action.payload,
+      };
+    case "POST_POKEMON":
+      return {
+        ...state,
+      };
     default:
       return state;
   }

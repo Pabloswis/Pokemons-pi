@@ -13,7 +13,7 @@ const router = Router();
 
 const getPokemonsApi = async () => {
   let primeraPromesa = await axios.get(
-    "https://pokeapi.co/api/v2/pokemon?limit=100&offset=0"
+    "https://pokeapi.co/api/v2/pokemon?limit=40&offset=0"
   );
   primeraPromesa = primeraPromesa.data.results?.map((pokemon) =>
     axios.get(pokemon.url)
@@ -38,10 +38,9 @@ const getPokemonsApi = async () => {
 };
 
 const getPokemonsDB = async () => {
-  let pokemonesDB = await Pokemon.findAll({include: Type});
- 
-  
-  pokemonesDB =  pokemonesDB.map(poke =>{
+  let pokemonesDB = await Pokemon.findAll({ include: Type });
+
+  pokemonesDB = pokemonesDB.map((poke) => {
     return {
       id: poke.id,
       nombre: poke.nombre,
@@ -54,8 +53,8 @@ const getPokemonsDB = async () => {
       tipo: poke.types.map((t) => t.nombre),
       creadoDb: poke.creadoDb,
       imagen: poke.imagen,
-    }
-  })
+    };
+  });
   return pokemonesDB;
 };
 
@@ -92,7 +91,7 @@ router.get("/", async (req, res) => {
       res.status(200).send(allPokemons);
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
     res.status(400).send(error);
   }
 
@@ -149,8 +148,12 @@ router.get("/:idPokemon", async (req, res) => {
   try {
     const { idPokemon } = req.params;
     let allPokemons = await getAllPokemons();
+    if(!idPokemon) res.send('no mandaste un Id')
+    
     if (idPokemon) {
-      let pokemonId = await allPokemons.filter((poke) => poke.id.toString() === idPokemon.toString());
+      let pokemonId = await allPokemons.filter(
+        (poke) => poke.id.toString() === idPokemon.toString()
+      );
       pokemonId.length
         ? res.status(200).send(pokemonId)
         : res.status(404).send("No se encontro el Pokemon");
@@ -165,15 +168,26 @@ router.get("/:idPokemon", async (req, res) => {
 router.post("/", async (req, res) => {
   const { id, nombre, vida, ataque, defensa, velocidad, imagen, tipo } =
     req.body;
+
+    const pokemonCreado = await Pokemon.findOne({
+      where:{
+        nombre: nombre
+      }
+    })
+
     
-  try {
-    const newPokemon = await Pokemon.create({
+    try {
+      if(pokemonCreado)res.status(200).json('Tu pokemon ya esta creado')
+      if(!pokemonCreado){
+      const newPokemon = await Pokemon.create({
       nombre,
       vida,
       ataque,
       defensa,
       velocidad,
-      imagen: imagen?imagen:"https://purepng.com/public/uploads/large/purepng.com-pokeballpokeballdevicepokemon-ballpokemon-capture-ball-17015278258769okdi.png"
+      imagen: imagen
+        ? imagen
+        : "https://purepng.com/public/uploads/large/purepng.com-pokeballpokeballdevicepokemon-ballpokemon-capture-ball-17015278258769okdi.png",
     });
 
     let tipoDb = await Type.findAll({
@@ -184,12 +198,16 @@ router.post("/", async (req, res) => {
 
     //console.log(newPokemon);
 
-    res.status(201).json(newPokemon);
+    res.status(201).json('¡Pokemon creado con exito!');
+      }
+      
   } catch (error) {
     console.log(error);
     res.status(400).send(error);
   }
 });
+
+
 
 //conecto con el app
 module.exports = router;

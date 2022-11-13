@@ -1,0 +1,8 @@
+[ ] Input de búsqueda para encontrar pokemons por nombre (La búsqueda será exacta, es decir solo encontrará al pokemon si se coloca el nombre completo)
+    lo tengo para que vaya buscando mientras cambia el estado.
+Debido a que esto puede hacer que la búsqueda sea muy lenta limitar el resultado total a 40 pokemons totales.
+    lo tengo limitado a 100 para poder tener al menos 1 en cada tipo
+
+
+
+falta validar que cuando no tenga nombre no mande nada

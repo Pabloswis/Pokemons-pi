@@ -1,0 +1,33 @@
+.divMaster {
+   height: 100%;
+    width: 100%;
+}
+.loading{
+    width: 100%;
+    height: 100vh;
+}
+.divContent{
+    background-image: url(./imagen/arenaPokemon.jpg);
+    height: 100vh;
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.imagen{
+    width: 300px;
+   
+}
+
+.divCard{
+    display: flex;
+    /* background-color: bisque; */
+    flex-direction: row;
+    justify-content: center;
+    gap: 92px;
+    top: 158px;
+    position: absolute;
+    left: 363px;
+    /* opacity: 94%; */
+    border-radius: 5%;
+}
+

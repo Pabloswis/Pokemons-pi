@@ -1,0 +1,29 @@
+
+.divMaster{
+    background-image: url(./imagen/R.png);
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+     
+}
+.boton{
+    background-image: 
+    linear-gradient(to right, red,blue);
+    width: fit-content;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    border-radius: 1px;
+    border-color: rgb(29, 68, 84);
+    font-size: 30px;
+}
+
+.imagen{
+height: 150px;
+}
+.p{
+    color: beige;
+    position: absolute;
+    top: 567px;
+    left: 18px;
+}
