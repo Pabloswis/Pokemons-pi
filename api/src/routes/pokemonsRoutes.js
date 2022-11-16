@@ -12,9 +12,7 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 const getPokemonsApi = async () => {
-  let primeraPromesa = await axios.get(
-    "https://pokeapi.co/api/v2/pokemon?limit=40&offset=0"
-  );
+  let primeraPromesa = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=40&offset=0");
   primeraPromesa = primeraPromesa.data.results?.map((pokemon) =>
     axios.get(pokemon.url)
   );
@@ -77,6 +75,7 @@ router.get("/", async (req, res) => {
   try {
     const { nombre } = req.query;
     let allPokemons = await getAllPokemons();
+   
 
     if (nombre) {
       let pokemonName = await allPokemons.filter((poke) =>
@@ -148,8 +147,8 @@ router.get("/:idPokemon", async (req, res) => {
   try {
     const { idPokemon } = req.params;
     let allPokemons = await getAllPokemons();
-    if(!idPokemon) res.send('no mandaste un Id')
-    
+    if (!idPokemon) res.send("no mandaste un Id");
+
     if (idPokemon) {
       let pokemonId = await allPokemons.filter(
         (poke) => poke.id.toString() === idPokemon.toString()
@@ -169,45 +168,41 @@ router.post("/", async (req, res) => {
   const { id, nombre, vida, ataque, defensa, velocidad, imagen, tipo } =
     req.body;
 
-    const pokemonCreado = await Pokemon.findOne({
-      where:{
-        nombre: nombre
-      }
-    })
+  const pokemonCreado = await Pokemon.findOne({
+    where: {
+      nombre: nombre,
+    },
+  });
 
-    
-    try {
-      if(pokemonCreado)res.status(200).json('Tu pokemon ya esta creado')
-      if(!pokemonCreado){
+  try {
+    if (pokemonCreado) res.status(200).json("Tu pokemon ya esta creado");
+    if (!pokemonCreado) {
       const newPokemon = await Pokemon.create({
-      nombre,
-      vida,
-      ataque,
-      defensa,
-      velocidad,
-      imagen: imagen
-        ? imagen
-        : "https://purepng.com/public/uploads/large/purepng.com-pokeballpokeballdevicepokemon-ballpokemon-capture-ball-17015278258769okdi.png",
-    });
+        nombre,
+        vida,
+        ataque,
+        defensa,
+        velocidad,
+        imagen: imagen
+          ? imagen
+          : "https://purepng.com/public/uploads/large/purepng.com-pokeballpokeballdevicepokemon-ballpokemon-capture-ball-17015278258769okdi.png",
+      });
 
-    let tipoDb = await Type.findAll({
-      where: { nombre: tipo },
-    });
-    //vincular el tipo a la otra tabla
-    newPokemon.addType(tipoDb);
+      let tipoDb = await Type.findAll({
+        where: { nombre: tipo },
+      });
+      //vincular el tipo a la otra tabla
+      newPokemon.addType(tipoDb);
 
-    //console.log(newPokemon);
+      //console.log(newPokemon);
 
-    res.status(201).json('¡Pokemon creado con exito!');
-      }
-      
+      res.status(201).json("¡Pokemon creado con exito!");
+    }
   } catch (error) {
     console.log(error);
     res.status(400).send(error);
   }
 });
-
-
 
 //conecto con el app
 module.exports = router;

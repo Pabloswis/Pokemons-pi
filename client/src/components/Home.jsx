@@ -8,6 +8,8 @@ import Paginado from "./Paginado";
 import s from './Home.module.css'
 import SearchBar from "./SearchBar";
 import pokeHenry from './imagen/POKEHENRY.png'
+import { botonCrear} from './CreatePokemon.module.css'
+
 
 export default function Home() {
     const allTypes = useSelector(state => state.types)
@@ -57,17 +59,19 @@ export default function Home() {
     }
 
     return (    
-
-        
+           
         <div className={s.divMaster}>
-        <div>
+
+         
+
+        <div className={s.logo}>
           <img src={pokeHenry} alt="logo" />
         </div>
     
         <div>
             <SearchBar/>
             <Link to='/created'>
-                <button >Crear pokemon</button>
+                <button className={botonCrear} >Crear pokemon</button>
             </Link>
         </div>
 
@@ -76,17 +80,20 @@ export default function Home() {
                 <option value='nombreAz'>Nombre A - Z</option>
                 <option value='nombreZa'>Nombre Z - A</option>
             </select>
+           
              <select onChange={(e) => handleOrderAtaque(e)}>
                 <option value='ataqueAz'>Ataque A - Z</option>
                 <option value='ataqueZa'>Ataque Z - A</option>
             </select>
+           
              <select onChange={(e) => handleFilterType(e)}>
                 <option key={allTypes.length + 1} value='Todos'>Todos los tipos</option>
                 {allTypes?.map(type => {
                     return (<option key={type.id} value={type.nombre}>{type.nombre}</option>)
                 })}
             </select>
-            <select onChange={(e) => handleFilterCreated(e)}>
+                
+            <select  onChange={(e) => handleFilterCreated(e)}>
                 <option value='todos'>Todos los creados</option>
                 <option value='creados'>Creados en DB</option>
                 <option value='api'>Poke API</option>
@@ -102,7 +109,8 @@ export default function Home() {
             </div>
 
             <div className={s.divPokemones}>
-                {currentPokemons.length !== 0 ?
+                {
+                currentPokemons.length !== 0 ?
                     currentPokemons?.map(p => {
                         return (
                             <Fragment >
@@ -111,16 +119,18 @@ export default function Home() {
                                 </Link>
                             </Fragment>
                         )
-                    }) : <div>
+                    }) 
+                    : <div>
                         {/* <img src={loading} alt="" /> */}
-                        <h2>Cargando...</h2>
+                        <h2 className={s.cargando}>Cargando...</h2>
+                      
                     </div>
 
                 }
-
             </div>
 
 
         </div>
+
     )
 }

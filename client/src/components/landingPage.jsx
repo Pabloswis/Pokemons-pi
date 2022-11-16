@@ -4,7 +4,9 @@ import s from './LandingPage.module.css'
 import imagen from './imagen/pokemon.png'
 export default function LandingPage() {
     return (
-        <div className={s.divMaster}>
+        <div className={s.backgroun}>
+
+             <div className={s.divMaster}>
          
          <img className={s.imagen} src={imagen} alt="" />
         
@@ -23,6 +25,8 @@ export default function LandingPage() {
 
 
         </div>
+        </div>
+       
 
     )
 }

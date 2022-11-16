@@ -12,6 +12,7 @@ function rootReducer(state = initialState, action) {
         ...state,
         pokemons: action.payload,
         pokeonesFull: action.payload,
+        detail: []
       };
 
     case "GET_POKEMON_ID":
@@ -86,10 +87,10 @@ function rootReducer(state = initialState, action) {
       let orden = [];
       if (action.payload === "ataqueAz") {
         orden = state.pokemons.sort(function (a, b) {
-          if (parseInt(a.ataque) > parseInt (b.ataque)) {
+          if (parseInt(a.ataque) > parseInt(b.ataque)) {
             return 1;
           }
-          if (parseInt(a.ataque) < parseInt (b.ataque)) {
+          if (parseInt(a.ataque) < parseInt(b.ataque)) {
             return -1;
           }
           return 0;
@@ -97,10 +98,10 @@ function rootReducer(state = initialState, action) {
       }
       if (action.payload === "ataqueZa") {
         orden = state.pokemons.sort((a, b) => {
-          if (parseInt(a.ataque) > parseInt (b.ataque)) {
+          if (parseInt(a.ataque) > parseInt(b.ataque)) {
             return -1;
           }
-          if (parseInt(a.ataque) < parseInt (b.ataque)) {
+          if (parseInt(a.ataque) < parseInt(b.ataque)) {
             return 1;
           }
           return 0;
@@ -117,10 +118,17 @@ function rootReducer(state = initialState, action) {
         ...state,
         pokemons: action.payload,
       };
+    
     case "POST_POKEMON":
       return {
         ...state,
       };
+
+      // case "LIMPIAR_DETALLE":
+      //   return{
+      //     ...state,
+      //     detail: action.payload
+      //   }
     default:
       return state;
   }

@@ -9,15 +9,12 @@ import Detail from "./components/Detail";
 function App() {
   return (
     <div className="App">
-      
-      
-      <switch>
-        
+      <switch>        
         <Route exact path='/' component={LandingPage}/>        
         <Route exact path='/home' component={Home}/>
         <Route exact path='/created' component={CreatePokemon}/>
         <Route exact path='/pokemon/:idPokemon' component={Detail} />
-        </switch>
+      </switch>
     </div>
   );
 }

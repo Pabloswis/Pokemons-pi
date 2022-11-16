@@ -1,11 +1,15 @@
 .card {
-    display: flex; justify-content: center;
-      width: 250px;
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+      /* width: 250px; */
       flex-direction: column;
       padding: 5px ;
-      border-radius: 10px;
+      border-radius: 5%;
       border: 0.25px solid #e8e7f3; 
-     background-color: rgb(76, 104, 145);
+     background-color: rgba(9, 181, 228, 0.5);
     }
 
 

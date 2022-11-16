@@ -7,6 +7,7 @@ export function getPokemons() {
     return dispatch({
       type: "GET_POKEMONS",
       payload: json.data,
+      detail: []
     });
   };
 }
@@ -91,3 +92,12 @@ export function getPokeId(idPokemon) {
     }
   };
 }
+
+// export function limpiarDetalle (payload){
+//   return async function (payload){
+//     return{
+//       type: "LIMPIAR_DETALLE",
+//       detail: []
+//     }
+//   }
+// }

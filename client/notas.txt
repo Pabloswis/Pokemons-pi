@@ -6,3 +6,7 @@ Debido a que esto puede hacer que la búsqueda sea muy lenta limitar el resultad
 
 
 falta validar que cuando no tenga nombre no mande nada
+
+
+en el ordenamiento agregar default para reestablecer el orden
+
