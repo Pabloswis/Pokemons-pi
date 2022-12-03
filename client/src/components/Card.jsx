@@ -1,6 +1,8 @@
 import React from "react";
 import s from './Card.module.css'
 
+// rafc - comando abreviado para crear un componente 
+
 
 export default function pokeCard ({id,nombre,imagen,tipo}){
     return (

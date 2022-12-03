@@ -70,8 +70,12 @@ export default function Home() {
     
         <div>
             <SearchBar/>
+
             <Link to='/created'>
                 <button className={botonCrear} >Crear pokemon</button>
+            </Link>
+            <Link to='/put'>
+                <button className={botonCrear} >Eliminar Pokemon</button>
             </Link>
         </div>
 

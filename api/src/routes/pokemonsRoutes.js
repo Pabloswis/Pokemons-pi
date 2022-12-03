@@ -12,7 +12,9 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 const getPokemonsApi = async () => {
-  let primeraPromesa = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=40&offset=0");
+  let primeraPromesa = await axios.get(
+    "https://pokeapi.co/api/v2/pokemon?limit=40&offset=0"
+  );
   primeraPromesa = primeraPromesa.data.results?.map((pokemon) =>
     axios.get(pokemon.url)
   );
@@ -75,7 +77,6 @@ router.get("/", async (req, res) => {
   try {
     const { nombre } = req.query;
     let allPokemons = await getAllPokemons();
-   
 
     if (nombre) {
       let pokemonName = await allPokemons.filter((poke) =>
@@ -204,5 +205,30 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.put("/:idPokemon", async (req, res) => {
+  try {
+    const { idPokemon } = req.params;
+    const pokemon = req.body;
+
+    const pokemonModificado = await Pokemon.update(pokemon, {
+      where: { id: idPokemon },
+    });
+
+    res.status(200).json('pokemon modificado con exito');
+  } catch (error) {
+    res.status(400).json({ "mensaje de error": error });
+  }
+});
+
+router.delete("/:idPokemon", async (req, res) => {
+  try {
+    const { idPokemon } = req.params;
+    await Pokemon.destroy({ where: { id: idPokemon } });
+
+    res.status(200).json({'Acabas de Borrar el pokemon con id': idPokemon});
+  } catch (error) {
+    res.status(400).json({ "mensaje de error": error });
+  }
+});
 //conecto con el app
 module.exports = router;

@@ -12,7 +12,7 @@ function rootReducer(state = initialState, action) {
         ...state,
         pokemons: action.payload,
         pokeonesFull: action.payload,
-        detail: []
+        detail: [],
       };
 
     case "GET_POKEMON_ID":
@@ -118,17 +118,21 @@ function rootReducer(state = initialState, action) {
         ...state,
         pokemons: action.payload,
       };
-    
+
     case "POST_POKEMON":
       return {
         ...state,
       };
 
-      // case "LIMPIAR_DETALLE":
-      //   return{
-      //     ...state,
-      //     detail: action.payload
-      //   }
+    // case "LIMPIAR_DETALLE":
+    //   return{
+    //     ...state,
+    //     detail: action.payload
+    //   }
+    case "DELETE_POKEMON":
+      return {
+        ...state,
+      };
     default:
       return state;
   }

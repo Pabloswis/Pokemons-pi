@@ -93,6 +93,16 @@ export function getPokeId(idPokemon) {
   };
 }
 
+export function deletePokemon(idPokemon){
+  return async function(dispatch){
+     try {
+    return axios.delete("http://localhost:3001/pokemons/"+idPokemon)
+  } catch (error) {
+    console.log(error)
+  }
+  }
+ 
+}
 // export function limpiarDetalle (payload){
 //   return async function (payload){
 //     return{

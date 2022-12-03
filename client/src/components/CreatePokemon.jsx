@@ -161,7 +161,7 @@ export default function PokemonCrate() {
                 <label>Defensa: </label>
                 <input
                     onChange={(e) => handleChange(e)}
-
+                    placeholder="1-100"
                     key='defensa'
                     name='defensa'
                     type="number"
@@ -173,16 +173,16 @@ export default function PokemonCrate() {
 
 
                 <label>Velocidad: </label>
-                <input onChange={(e) => handleChange(e)} key='velocidad' name='velocidad' type="number" min="0" />
+                <input placeholder='Velocidad' onChange={(e) => handleChange(e)} key='velocidad' name='velocidad' type="number" min="0" />
 
                 <label>Altura: </label>
-                <input onChange={(e) => handleChange(e)} key='altura' name='altura' type="number" min="0" />
+                <input placeholder="Altura" onChange={(e) => handleChange(e)} key='altura' name='altura' type="number" min="0" />
 
                 <label>Peso: </label>
-                <input onChange={(e) => handleChange(e)} key='peso' name='peso' type="number" min="0" />
+                <input placeholder="Peso" onChange={(e) => handleChange(e)} key='peso' name='peso' type="number" min="0" />
 
                 <label>Imagen: </label>
-                <input onChange={(e) => handleChange(e)} key='imagen' name='imagen' type="text" />
+                <input  placeholder="ingrese Url" onChange={(e) => handleChange(e)} key='imagen' name='imagen' type="text" />
 
                 <label >Tipos: </label>
                 <select onChange={(e) => handleSelect(e)}>
