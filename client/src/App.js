@@ -1,5 +1,5 @@
 import "./App.css";
-import { Route } from "react-router-dom";
+import { Route  } from "react-router-dom";
 import LandingPage from "./components/landingPage";
 import Home from "./components/Home";
 import CreatePokemon from './components/CreatePokemon'

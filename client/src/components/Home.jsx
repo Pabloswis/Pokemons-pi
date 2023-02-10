@@ -4,12 +4,15 @@ import { useDispatch, useSelector } from "react-redux"
 import { getPokemons, getTypes, filterForType, filterFrom, orderName, ordenAtaque } from "../actions/index-actions";
 import { Link } from "react-router-dom"
 import Card from "./Card";
+
 import Paginado from "./Paginado";
 import s from './Home.module.css'
 import SearchBar from "./SearchBar";
 import pokeHenry from './imagen/POKEHENRY.png'
 import { botonCrear} from './CreatePokemon.module.css'
+import NavBar from "./NavBar";
 
+ 
 
 export default function Home() {
     const allTypes = useSelector(state => state.types)
@@ -61,14 +64,15 @@ export default function Home() {
     return (    
            
         <div className={s.divMaster}>
-
-         
-
-        <div className={s.logo}>
+        
+        <NavBar/>
+        
+        {/* <div className={s.logo}>
           <img src={pokeHenry} alt="logo" />
         </div>
-    
-        <div>
+     */}
+       
+        {/* <div>
             <SearchBar/>
 
             <Link to='/created'>
@@ -77,9 +81,9 @@ export default function Home() {
             <Link to='/put'>
                 <button className={botonCrear} >Eliminar Pokemon</button>
             </Link>
-        </div>
+        </div> */}
 
-        <div>
+        <div className={s.select}>
             <select onChange={(e) => handleOrder(e)}>
                 <option value='nombreAz'>Nombre A - Z</option>
                 <option value='nombreZa'>Nombre Z - A</option>
