@@ -20,7 +20,9 @@
       touch-action: manipulation;
     }
 .input{
-    border-radius: 10px;
-    outline: none;
-    padding: 10px;
+    
+    font-size: .8em;
+    border-radius: 5px;
+    padding: 8px;
+    margin-top: 5px;
 }

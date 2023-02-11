@@ -1,6 +1,6 @@
 .nav{
     /* background: linear-gradient(#0d70ea, #0dccea ); */
-    background: linear-gradient(#200e38, #6a0e47);
+    background: linear-gradient(#111625, #5c3a58a8);
     margin: 0;
     padding: 0;
     height:60px;
@@ -15,8 +15,16 @@ padding: 5px;
 margin-left: 10px;
 }
 
-.botonCrear{ 
-    background-image: linear-gradient(#0dccea, #0d70ea);
+/* 
+.color1 { #40223c };
+.color2 { #42988f };
+.color3 { #b1c592 };
+.color4 { #f1ddba };
+.color5 { #fb718a };
+*/
+
+.btn_navbar{ 
+      background: linear-gradient(#5dc7a2, #0c0636);
       border: 0;
       border-radius: 4px;
       box-shadow: rgba(0, 0, 0, .3) 0 5px 15px;
@@ -24,11 +32,17 @@ margin-left: 10px;
       color: #fff;
       cursor: pointer;
       font-family: Montserrat,sans-serif;
-      font-size: .9em;
+      font-size: .8em;
       /* margin: 5px; */
-      padding: 10px;      
+      padding: 8px;      
       text-align: center;
-      user-select: none;
-      -webkit-user-select: none;
-      touch-action: manipulation;
+      /* user-select: none; */
+      /* -webkit-user-select: none;
+      touch-action: manipulation; */
+      transition-duration: 0.4s;
+  }
+
+  .btn_navbar:hover {
+    background: #4CAF50; /* Green */
+    color: black;
   }

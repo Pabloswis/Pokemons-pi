@@ -1,9 +1,35 @@
-.nav{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .ul{
-    display: flex;
-    gap: 10px;
-    }
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ul {
+  display: flex;
+  gap: 10px;
+}
+
+.btn_paginado{ 
+  background: linear-gradient(#5dc7a2, #0c0636);
+  border: 0;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, .3) 0 5px 15px;
+  /* box-sizing: border-box; */
+  color: #fff;
+  cursor: pointer;
+  font-family: Montserrat,sans-serif;
+  font-size: .8em;
+  /* margin: 5px; */
+  padding: 8px;    
+  margin: 0 5px 0 5px;  
+  text-align: center;
+  /* user-select: none; */
+  /* -webkit-user-select: none;
+  touch-action: manipulation; */
+  transition-duration: 0.4s;
+}
+
+.btn_paginado:hover {
+background: #4CAF50; /* Green */
+color: black;
+}
+

@@ -1,6 +1,7 @@
 import React from "react";
 import s from './Paginado.module.css'
 import {botonBuscar} from './SearchBar.module.css'
+
 export default function Paginado({ pokemonesPorPagina, allPokemons, paginado }) {
     const numeroPagina = []
 
@@ -16,7 +17,7 @@ return (
                     numeroPagina.map(numero => {
                         return(
                         <section className={s.section} key={numero}>
-                            <button className={botonBuscar} onClick={() => paginado(numero)}>
+                            <button className={s.btn_paginado} onClick={() => paginado(numero)}>
                             {numero}
                             </button>
                           

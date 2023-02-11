@@ -23,7 +23,7 @@ a:link, a:visited {
     margin: 0%;
     padding: 0%;
     /* background-image: url(./imagen/website-background-image-size-psd-vector-photo.jpg); */
-    background: linear-gradient(#200e38, #6a0e47);
+    background: linear-gradient(#571b3c,#7a1e48,#9d2053);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -49,5 +49,10 @@ a:link, a:visited {
   }
 
   .select select{
+    background: linear-gradient(#5dc7a2, #0c0636);
     margin: 0 30px 0 30px;
+  }
+
+  .select select option{
+    background: linear-gradient(#5dc7a2, #0c0636);
   }

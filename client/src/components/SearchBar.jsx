@@ -3,6 +3,7 @@ import { useState } from "react";
 import {useDispatch} from "react-redux"
 import { getPokeName } from "../actions/index-actions";
 import s from './SearchBar.module.css'
+import style from './NavBar.module.css'
 
 
 export default function SearchBar(){
@@ -31,7 +32,7 @@ export default function SearchBar(){
             placeholder="Buscar Pokemon"
             />
         <button 
-        className={s.botonBuscar}
+        className={style.btn_navbar} 
         onClick={(e)=> handleSubmit(e)}
         type="submit"> Buscar </button>
         </div>
