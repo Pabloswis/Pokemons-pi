@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { useEffect } from "react";
 import s from './CreatePokemon.module.css'
+import style from './NavBar.module.css'
 
 
 
@@ -56,7 +57,6 @@ export default function PokemonCrate() {
 
     function handleSubmit(e) {
         e.preventDefault()
-
         if (!input.nombre) {
             return alert('No puede crear un pokemon sin Nombre')
         }
@@ -113,8 +113,12 @@ export default function PokemonCrate() {
 
     return (
         <section className={s.section}>
-            <Link to='/home'><button className={s.buttonVolver} >Volver a home</button></Link>
-            <h2 className={s.h1_form}>Formulario de nuevo Pokemon</h2>
+            <div className={s.div_nav}>
+            <Link to='/home'><button className={style.btn_navbar} >Volver a home</button></Link>
+            </div>
+
+            <h2>Formulario de nuevo Pokemon</h2>
+
             <form className={s.formulario} onSubmit={(e) => handleSubmit(e)}>
 
                 <label>Nombre: </label>
@@ -185,20 +189,24 @@ export default function PokemonCrate() {
                 <input  placeholder="ingrese Url" onChange={(e) => handleChange(e)} key='imagen' name='imagen' type="text" />
 
                 <label >Tipos: </label>
-                <select onChange={(e) => handleSelect(e)}>
-                    {tipos?.map(type => {
-                        return (
-                            <option key={type.id} value={type.nombre}>{type.nombre}</option>
+                <section className={s.select_tipo}>               
+                    <select onChange={(e) => handleSelect(e)}>
+                        {tipos?.map(type => {
+                            return (
+                               <option key={type.id} value={type.nombre}>{type.nombre}</option>
                         )
-                    })}
-                </select>
-                <button onClick={resetTipos} className={s.botonReset} type='button'>Reset Tipos</button>
-                {input.tipo?.map(tipo => {
-                    return (
-                        <p>{tipo}</p>
-                    )
-                })}
-
+                            })}
+                    </select>
+                    <button onClick={resetTipos} className={s.botonReset} type='button'>Reset Tipos</button>                   
+                       
+                </section>
+                <section className={s.tipo_p}>
+                          {input.tipo?.map(tipo => {
+                            return (
+                                <p>{tipo}</p>
+                            )
+                        })}
+                </section>
                 <button className={s.botonCrear} type="submit"> Crear Pokemon</button>
 
 

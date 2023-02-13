@@ -1,35 +1,87 @@
+
 .section{
-  background-image: url(./imagen/website-background-image-size-psd-vector-photo.jpg);
-  background-repeat: no-repeat;
+  /* background-image: url(./imagen/website-background-image-size-psd-vector-photo.jpg); */
+  /* background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-  background-size: 100% 100%
+  background-size: 100% 100% */
   /* height: auto; */
   /* background: rgb(38,255,154); */
   /* background: linear-gradient(90deg, rgba(38,255,154,1) 0%, rgba(27,228,183,1) 35%, rgba(2,152,182,1) 100%); */
+  background: radial-gradient(circle, rgba(140,31,78,1) 0%, rgba(130,140,31,0.26952030812324934) 50%, rgba(140,31,78,1) 100%);  /* background: linear-gradient(0deg, rgba(87,27,60,1) 15%, rgba(157,32,83,1) 47%, rgba(140,31,78,1) 63%); */
+  height: 100vh;
 }
+
+.section h2{
+  font-style: italic;
+  margin-top: 0;
+}
+.div_nav{
+  display: flex;
+}
+
+.div_nav h2{
+  justify-content: center;
+}
+
 .formulario{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 60px;
-  max-width: 400px;
-  background-color: rgba(127, 50, 222, 0.317);
+  /* flex-direction: column; */
+  flex-wrap: wrap;
+  /* align-items: center; */
+  /* justify-content: space-between; */
+  padding: 40px;
+  max-width: 45%;
+  background-color: #8c1f4eaf;
   margin: 0 auto;
-  border-radius: 10%;
+  border-radius: 5%;
   gap: 5px;
-  /* margin-bottom: 15px; */
-}
-.h1_form{
-
-font-style: italic;
-margin-top: 0;
+  /* margin-bottom: 15px;   */
 }
 
+.formulario input{
+  width: 60%;
+  margin: 0 auto ;
+}
 
-.botonCrear{
- 
+.formulario label{
+width: 30%;
+font-weight: 700;
+text-transform: uppercase;
+margin-bottom: 10px;
+}
+
+.formulario div{
+  /* background-color: #39739d;   */
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+.select_tipo{
+  /* background-color: #3c4fe0; */
+  display: flex;
+  width: 60%;
+  margin: 0 auto ;
+  /* align-items:center; */
+  justify-content: center;
+  
+}
+
+.tipo_p {
+  display: flex;
+  width: 60%;
+  margin: 0 auto ;
+  /* align-items:center; */
+  justify-content: center;
+}
+.tipo_p p{
+  margin: 0 15px 0 15px;
+}
+
+.botonCrear{ 
   appearance: button;
   background-color: #1899D6;
   border: solid transparent;
@@ -88,15 +140,6 @@ margin-top: 0;
 .botonCrear:disabled {
   cursor: auto;
 }
-
-label{
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 7px;
-    display: block;
-    width: 100%;
-}
-
 
 
 /* CSS */
@@ -187,3 +230,5 @@ label{
     box-shadow: none;
     color: #2c5777;
   }
+
+  
