@@ -3,7 +3,8 @@
   height: 100vh;
 }
 .divPokemones {
-  margin: 0px;
+  margin-top: 15px;
+  /* margin: 0px; */
   /* padding: 50px; */
   display: flex;
   justify-content: center;
@@ -49,7 +50,7 @@ a:visited {
   padding-top: 10px;
   padding-left: 5px;
 }
-.select {
+.div_select {
   display: flex;
   justify-content: center;
   padding: 4px 4px;
@@ -57,11 +58,14 @@ a:visited {
   /* background-color: #0ae8bee6; */
 }
 
-.select select {
-  background: linear-gradient(#5dc7a2, #0c0636);
+.div_select select {
+  /* background: linear-gradient(#5dc7a2, #0c0636); */
+  background: linear-gradient(180deg, rgba(235,25,110,1) 0%, rgba(0,0,0,0.6812850140056023) 50%, rgba(235,25,110,1) 100%);
   margin: 0 30px 0 30px;
+  padding: 4px 3px;
+  border-radius: 5%;
 }
 
-.select select option {
-  background: linear-gradient(#5dc7a2, #0c0636);
+.div_select select option {
+  background-color: rgba(235,25,110,1);
 }

@@ -10,6 +10,7 @@ import style from './NavBar.module.css'
 
 
 
+
 export default function PokemonCrate() {
     const dispatch = useDispatch()
     const history = useHistory()
@@ -207,7 +208,8 @@ export default function PokemonCrate() {
                             )
                         })}
                 </section>
-                <button className={s.botonCrear} type="submit"> Crear Pokemon</button>
+                <button type="submit" class={`${s.boton} ${s.draw_border}`}>Crear Pokemon</button>
+                {/* <button className={s.botonCrear} type="submit"> Crear Pokemon</button> */}
 
 
             </form>

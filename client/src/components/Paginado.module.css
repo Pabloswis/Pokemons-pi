@@ -9,7 +9,9 @@
 }
 
 .btn_paginado{ 
-  background: linear-gradient(#5dc7a2, #0c0636);
+  /* background: linear-gradient(#5dc7a2, #0c0636); */
+  background: linear-gradient(180deg, rgba(235,25,110,1) 0%, rgba(0,0,0,0.6812850140056023) 50%, rgba(235,25,110,1) 100%);
+
   border: 0;
   border-radius: 4px;
   box-shadow: rgba(0, 0, 0, .3) 0 5px 15px;

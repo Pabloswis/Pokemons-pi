@@ -8,7 +8,15 @@
   /* height: auto; */
   /* background: rgb(38,255,154); */
   /* background: linear-gradient(90deg, rgba(38,255,154,1) 0%, rgba(27,228,183,1) 35%, rgba(2,152,182,1) 100%); */
-  background: radial-gradient(circle, rgba(140,31,78,1) 0%, rgba(130,140,31,0.26952030812324934) 50%, rgba(140,31,78,1) 100%);  /* background: linear-gradient(0deg, rgba(87,27,60,1) 15%, rgba(157,32,83,1) 47%, rgba(140,31,78,1) 63%); */
+  background-color: #898994;
+  opacity: 0.8;
+  background-image: radial-gradient(
+      rgba(87, 27, 60, 1) 1.05px,
+      transparent 1.05px
+    ),
+    radial-gradient(rgba(87, 27, 60, 1) 1.05px, #898994 1.05px);
+  background-size: 42px 42px;
+  background-position: 0 0, 21px 21px;  /* background: linear-gradient(0deg, rgba(87,27,60,1) 15%, rgba(157,32,83,1) 47%, rgba(140,31,78,1) 63%); */
   height: 100vh;
 }
 
@@ -81,7 +89,7 @@ margin-bottom: 10px;
   margin: 0 15px 0 15px;
 }
 
-.botonCrear{ 
+/* .botonCrear{ 
   appearance: button;
   background-color: #1899D6;
   border: solid transparent;
@@ -139,11 +147,11 @@ margin-bottom: 10px;
 
 .botonCrear:disabled {
   cursor: auto;
-}
+} */
 
 
 /* CSS */
-.buttonVolver {
+/* .buttonVolver {
   align-items: center;
   appearance: none;
   background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
@@ -186,7 +194,7 @@ margin-bottom: 10px;
 .buttonVolver:active {
   box-shadow: #3c4fe0 0 3px 7px inset;
   transform: translateY(2px);
-}
+} */
 
 .botonReset{
   
@@ -232,3 +240,73 @@ margin-bottom: 10px;
   }
 
   
+.draw_border {
+  box-shadow: inset 0 0 0 4px #58cdd1;
+  color: #58afd1;
+  -webkit-transition: color 0.25s 0.0833333333s;
+  transition: color 0.25s 0.0833333333s;
+  position: relative;
+}
+
+.draw_border::before,
+.draw_border::after {
+  border: 0 solid transparent;
+  box-sizing: border-box;
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  width: 0rem;
+  height: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.draw_border::before {
+  border-bottom-width: 4px;
+  border-left-width: 4px;
+}
+
+.draw_border::after {
+  border-top-width: 4px;
+  border-right-width: 4px;
+}
+
+.draw_border:hover {
+  color: #ffe593;
+}
+
+.draw_border:hover::before,
+.draw_border:hover::after {
+  border-color: #eb196e;
+  -webkit-transition: border-color 0s, width 0.25s, height 0.25s;
+  transition: border-color 0s, width 0.25s, height 0.25s;
+  width: 100%;
+  height: 100%;
+}
+
+.draw_border:hover::before {
+  -webkit-transition-delay: 0s, 0s, 0.25s;
+  transition-delay: 0s, 0s, 0.25s;
+}
+
+.draw_border:hover::after {
+  -webkit-transition-delay: 0s, 0.25s, 0s;
+  transition-delay: 0s, 0.25s, 0s;
+}
+
+.boton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  line-height: 1.5;
+  font: 700 1.2rem 'Roboto Slab', sans-serif;
+  padding: 0.75em 2em;
+  letter-spacing: 0.05rem;
+  /* margin: 1em; */
+  width: 60%;
+  margin: 0 auto;
+}
+
+.boton:focus {
+  outline: 2px dotted #55d7dc;
+}

@@ -12,10 +12,10 @@ export default function Navbar() {
           <Link to='/created'>
                 <button className={s.btn_navbar} >Crear pokemon</button>
             </Link>
-            <Link to='/put'>
+            <Link to='/delete'>
                 <button className={s.btn_navbar} >Eliminar Pokemon</button>
             </Link>
-             <Link to='/#'>
+             <Link to='/put'>
                 <button className={s.btn_navbar} >Modificar Pokemon</button>
             </Link>
          

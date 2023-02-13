@@ -9,14 +9,13 @@ input{
   width: auto;
 }
 
-select {
+/* select {
   margin-left: 5px;
   margin-right: 5px;
   padding: 4px 3px;
-  /* border: 1px  blue; */
   border-radius: 5%;
   background-color: #42a4e1ca;
-}
+} */
 
 .App-logo {
   /* height: 40vmin;

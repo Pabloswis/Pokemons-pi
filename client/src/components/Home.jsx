@@ -67,7 +67,7 @@ export default function Home() {
 
             <NavBar />
 
-            <div className={s.select}>
+            <div className={s.div_select}>
                 <select onChange={(e) => handleOrder(e)}>
                     <option value='nombreAz'>Nombre A - Z</option>
                     <option value='nombreZa'>Nombre Z - A</option>
@@ -91,14 +91,7 @@ export default function Home() {
                     <option value='api'>Poke API</option>
                 </select>
 
-            </div>
-
-            <div>
-                <Paginado
-                    pokemonesPorPagina={pokemonesPorPagina}
-                    allPokemons={allPokemons.length}
-                    paginado={paginado} />
-            </div>
+            </div>           
 
             <div className={s.divPokemones}>
                 {
@@ -121,6 +114,12 @@ export default function Home() {
                 }
             </div>
 
+            <div>
+                <Paginado
+                    pokemonesPorPagina={pokemonesPorPagina}
+                    allPokemons={allPokemons.length}
+                    paginado={paginado} />
+            </div>
 
         </div>
 
