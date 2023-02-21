@@ -11,12 +11,14 @@ import SearchBar from "./SearchBar";
 import pokeHenry from './imagen/POKEHENRY.png'
 import { botonCrear } from './CreatePokemon.module.css'
 import NavBar from "./NavBar";
+import { all } from "axios";
 
 
 
 export default function Home() {
     const allTypes = useSelector(state => state.types)
     const allPokemons = useSelector((state) => state.pokemons) //arreglo del estado
+// console.log(allPokemons)
 
     const dispatch = useDispatch()
 
@@ -33,6 +35,7 @@ export default function Home() {
     const paginado = (numeroPagina) => {
         serCurrentPage(numeroPagina)
     }
+
 
     useEffect(() => {
         dispatch(getPokemons())

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import s from './PutPokemon.module.css'
 import style from './NavBar.module.css'
-import { getPokemons } from '../actions/index-actions'
+import { getPokemons, putPokemon } from '../actions/index-actions'
 
 export default function PutPokemon() {
   //traer =>  pokeonesFull: []
@@ -16,13 +16,14 @@ export default function PutPokemon() {
   const pokemonsDb = useSelector((state) => state.pokeonesFull).filter((poke) => poke.creadoDb === true) 
   const tipos = useSelector((state) => state.types)
   const [pokemon, setPokemon] = useState({}) 
-
   const [errores, setErrores] = useState({})
+  const history = useHistory()
 
   const handleName = (e) => { 
     // valores actuales del pokemon ==> completa el placeholder   
     const p = pokemonsDb.find((poke) => poke.id ===  e.target.value)    
     setPokemon( { 
+    id: p.id,
     nombre: p.nombre,
     vida: p.vida,
     ataque: p.ataque,
@@ -34,10 +35,17 @@ export default function PutPokemon() {
     tipo: p.tipo})
   }
 
-  const handleSubmit = ()=>{
-
+  const handleSubmit = (e)=>{
+    e.preventDefault()
+    dispatch(putPokemon(pokemon))
+    history.push('/home')
   }
-  const handleChange = ()=>{
+
+  const handleChange = (e)=>{
+    setPokemon({
+      ...pokemon,
+      [e.target.name]:e.target.value
+    })
 
   }
 

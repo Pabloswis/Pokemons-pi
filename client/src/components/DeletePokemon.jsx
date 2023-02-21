@@ -3,7 +3,8 @@ import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getPokemons, deletePokemon } from "../actions/index-actions";
-import { buttonVolver } from './CreatePokemon.module.css'
+
+import style from './NavBar.module.css'
 import { useState } from "react";
 import {card__name,card__image,btn,draw_border,grid_container } from './Card.module.css'
 import s from './DeletePokemon.module.css'
@@ -32,11 +33,11 @@ export default function PutPokemon() {
 
     return (
         <div className={s.divContainer}>
-            <div>
-            <Link to='/home'><button className={buttonVolver} >Volver a home</button></Link>
+            <div className={s.div_volver}>
+            <Link to='/home'><button className={style.btn_navbar} >Volver a home</button></Link>
             </div>
 
-            <h2>seleccione el pokemon para eliminar</h2>
+            <h2>Seleccione el pokemon a eliminar</h2>
            
            <div className={s.divCards}>
               {pokemons.length > 0 ? pokemons.map(p => {

@@ -11,7 +11,6 @@ export function getPokemons() {
     });
   };
 }
-
 export function getTypes() {
   return async function (dispatch) {
     let types = await axios.get("http://localhost:3001/type", {});
@@ -22,21 +21,18 @@ export function getTypes() {
     });
   };
 }
-
 export function filterForType(payload) {
   return {
     type: "FILTER_POKEMONS_TYPE",
     payload: payload,
   };
 }
-
 export function filterFrom(payload) {
   return {
     type: "FILTER_FROM",
     payload: payload,
   };
 }
-
 export function orderName(payload) {
   return {
     type: "ORDER_NAME",
@@ -49,7 +45,6 @@ export function ordenAtaque(payload){
     payload:payload
   }
 }
-
 export function getPokeName(nombre) {
   return async function (dispatch) {
     try {
@@ -65,7 +60,6 @@ export function getPokeName(nombre) {
     }
   };
 }
-
 export function postPokemon(pokemon) {
   try {
     return function (dispatch) {
@@ -77,7 +71,6 @@ export function postPokemon(pokemon) {
     return "Algo salio mal, intente de nuevo";
   }
 }
-
 export function getPokeId(idPokemon) {
   return async function (dispatch) {
     try {
@@ -92,7 +85,6 @@ export function getPokeId(idPokemon) {
     }
   };
 }
-
 export function deletePokemon(idPokemon){
   return async function(dispatch){
      try {
@@ -100,14 +92,19 @@ export function deletePokemon(idPokemon){
   } catch (error) {
     console.log(error)
   }
-  }
- 
+  } 
 }
-// export function limpiarDetalle (payload){
-//   return async function (payload){
-//     return{
-//       type: "LIMPIAR_DETALLE",
-//       detail: []
-//     }
-//   }
-// }
+export function putPokemon(pokemon) {
+  const {id} = pokemon
+  try {
+    return function (dispatch) {
+      return axios.put(`http://localhost:3001/pokemons/${id}`, pokemon);
+    };
+    // eslint-disable-next-line no-unreachable
+  } catch (error) {
+    console.log(error);
+    return `Algo salio mal, intente de nuevo: ${error}`;
+  }
+}
+
+

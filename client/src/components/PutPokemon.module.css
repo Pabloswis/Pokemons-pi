@@ -21,6 +21,10 @@
     padding: 4px 3px;
     border-radius: 5%;
   }
+  .div_select h2{
+    font-size: 25px;
+    margin-top: 0;
+  }
   
   .div_select select option {
     color: beige;

@@ -12,6 +12,12 @@
     background-size: 42px 42px;
     background-position: 0 0, 21px 21px;
 }
+.divContainer h2{
+    font-size: 25px;
+}
+.div_volver{
+    display: flex;
+}
 
 .divCards{
     margin: 0px;
