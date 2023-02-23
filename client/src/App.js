@@ -7,6 +7,8 @@ import Detail from "./components/Detail";
 import DeletePokemon from "./components/DeletePokemon";
 import PutPokemon from "./components/PutPokemon";
 
+import axios from 'axios'
+axios.defaults.baseURL = 'http://localhost:3001'
 
 function App() {
   return (

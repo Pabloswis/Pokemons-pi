@@ -2,7 +2,7 @@ import axios from "axios";
 
 export function getPokemons() {
   return async function (dispatch) {
-    let json = await axios.get("http://localhost:3001/pokemons", {});
+    let json = await axios.get("/pokemons", {});
 
     return dispatch({
       type: "GET_POKEMONS",
@@ -13,7 +13,7 @@ export function getPokemons() {
 }
 export function getTypes() {
   return async function (dispatch) {
-    let types = await axios.get("http://localhost:3001/type", {});
+    let types = await axios.get("/type", {});
 
     return dispatch({
       type: "GET_TYPES",
@@ -49,7 +49,7 @@ export function getPokeName(nombre) {
   return async function (dispatch) {
     try {
       const pokeName = await axios.get(
-        `http://localhost:3001/pokemons?nombre=${nombre}`
+        `/pokemons?nombre=${nombre}`
       );
       return dispatch({
         type: "GET_POKEMON_NAME",
@@ -63,7 +63,7 @@ export function getPokeName(nombre) {
 export function postPokemon(pokemon) {
   try {
     return function (dispatch) {
-      return axios.post("http://localhost:3001/pokemons", pokemon);
+      return axios.post("/pokemons", pokemon);
     };
     // eslint-disable-next-line no-unreachable
   } catch (error) {
@@ -74,7 +74,7 @@ export function postPokemon(pokemon) {
 export function getPokeId(idPokemon) {
   return async function (dispatch) {
     try {
-      const pokeId = await axios.get(`http://localhost:3001/pokemons/`+ idPokemon);
+      const pokeId = await axios.get(`/pokemons/`+ idPokemon);
 
       return dispatch({
         type: "GET_POKEMON_ID",
@@ -88,7 +88,7 @@ export function getPokeId(idPokemon) {
 export function deletePokemon(idPokemon){
   return async function(dispatch){
      try {
-    return axios.delete("http://localhost:3001/pokemons/"+idPokemon)
+    return axios.delete("/pokemons/"+idPokemon)
   } catch (error) {
     console.log(error)
   }
@@ -98,7 +98,7 @@ export function putPokemon(pokemon) {
   const {id} = pokemon
   try {
     return function (dispatch) {
-      return axios.put(`http://localhost:3001/pokemons/${id}`, pokemon);
+      return axios.put(`/pokemons/${id}`, pokemon);
     };
     // eslint-disable-next-line no-unreachable
   } catch (error) {
