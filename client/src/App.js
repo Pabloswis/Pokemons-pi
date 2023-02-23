@@ -8,7 +8,7 @@ import DeletePokemon from "./components/DeletePokemon";
 import PutPokemon from "./components/PutPokemon";
 
 import axios from 'axios'
-axios.defaults.baseURL = 'pokemons-pi-production-3d4a.up.railway.app'
+axios.defaults.baseURL = 'https://pokemons-pi-production-3d4a.up.railway.app/'
 
 function App() {
   return (
