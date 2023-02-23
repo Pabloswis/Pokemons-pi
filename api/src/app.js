@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 //requiero el archivo de rutas del index
 const pokemonRoutes = require('./routes/pokemonsRoutes.js');
-const type = require('./routes/Type.js')
+const type = require('./routes/type.js')
 
 
 require('./db.js');
