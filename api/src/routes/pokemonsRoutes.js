@@ -13,7 +13,7 @@ const router = Router();
 
 const getPokemonsApi = async () => {
   let primeraPromesa = await axios.get(
-    "https://pokeapi.co/api/v2/pokemon?limit=40&offset=0"
+    "https://pokeapi.co/api/v2/pokemon?limit=150&offset=0"
   );
   primeraPromesa = primeraPromesa.data.results?.map((pokemon) =>
     axios.get(pokemon.url)
